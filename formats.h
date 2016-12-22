@@ -19,24 +19,68 @@ void *trim(char *str) {
 		};
 }
 
-void underlined(char *text) {
-	printf("\033[4m%s\n\033[0m", text);
-}
-
-void italics(char *text) {
-	printf("\033[3m%s\n%c\033[0m", text);
-}
-
+// bold formats
 void bold(char *text) {
-	printf("\033[1m%s\n%c\033[0m", text);
+	printf("\033[1m%s\033[0m\n", text);
+}
+
+void bold_striked(char *text) {
+	printf("\033[1m%s\033[0m\n", text);
+}
+
+void bold_inderlined(char *text) {
+	printf("\033[1m%s\033[0m\n", text);
+}
+
+// italics formats
+void italics(char *text) {
+	printf("\033[3m%s\033[0m\n", text);
+}
+
+void italics_bold(char *text) {
+	printf("\033[3;1m%s\033[0m\n", text);
+}
+
+void italics_striked(char *text) {
+	printf("\033[3;9m%s\033[0m\n", text);
+}
+
+void italics_underlined(char *text) {
+	printf("\033[3;4m%s\033[0m\n", text);
+}
+
+// 3 formats
+void italics_bold_striked(char *text) {
+	printf("\033[3;9;1m%s\033[0m\n", text);
+}
+
+void italics_bold_underlined(char *text) {
+	printf("\033[3;4;1m%s\033[0m\n", text);
+}
+
+void italics_bold_striked(char *text) {
+	printf("\033[3;9;1m%s\033[0m\n", text);
+}
+
+// single
+void underlined(char *text) {
+	printf("\033[4m%s\033[0m\n", text);
+}
+
+void underlined_stricked(char *text) {
+	printf("\033[4;9m%s\033[0m\n", text);
 }
 
 void highlight(char *text) {
-	printf("\033[7m%s\n%c\033[0m", text);
+	printf("\033[7m%s\033[0m\n", text);
+}
+
+void highlight_striked(char *text) {
+	printf("\033[7;9m%s\033[0m\n", text);
 }
 
 void striked(char *text) {
-	printf("\033[9m%s\n%c\033[0m", text);
+	printf("\033[9m%s\033[0m\n", text);
 }
 
 char *replace(char *orig, char *rep, char *with) {
@@ -69,9 +113,9 @@ char *replace(char *orig, char *rep, char *with) {
 		free(result); free(tmp);
 }
 
-void circles(char *text) {
+void *__circles(char *text) {
 	char *new = text, *final;
-	new = replace(new, "a", "ⓐ ");new = replace(new, "o", "ⓞ ");
+	new = replace(new, "a", "ⓐ "); new = replace(new, "o", "ⓞ ");
 	new = replace(new, "b", "ⓑ "); new = replace(new, "p", "ⓟ ");
 	new = replace(new, "c", "ⓒ "); new = replace(new, "q", "ⓠ ");
 	new = replace(new, "d", "ⓓ "); new = replace(new, "r", "ⓡ ");
@@ -86,5 +130,9 @@ void circles(char *text) {
 	new = replace(new, "m", "ⓜ ");
 	new = replace(new, "n", "ⓝ ");
 	final = trim(new);
-	print(final);
+	return final;
+}
+
+void circles(char *text) {
+	print(__circles(text));
 }
