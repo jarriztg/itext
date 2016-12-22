@@ -58,10 +58,6 @@ void italics_bold_underlined(char *text) {
 	printf("\033[3;4;1m%s\033[0m\n", text);
 }
 
-void italics_bold_striked(char *text) {
-	printf("\033[3;9;1m%s\033[0m\n", text);
-}
-
 // single
 void underlined(char *text) {
 	printf("\033[4m%s\033[0m\n", text);
