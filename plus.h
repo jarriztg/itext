@@ -1,7 +1,3 @@
-void print(char *text){
-	printf("%s\n", text);
-}
-
 void *trim(char *str) {
     char *start, *end;
     for (start = str; *start; start++) {
@@ -17,66 +13,6 @@ void *trim(char *str) {
     if (start > str) {
         memmove(str, start, (end - start) + 1);
 		};
-}
-
-// bold formats
-void bold(char *text) {
-	printf("\033[1m%s\033[0m\n", text);
-}
-
-void bold_striked(char *text) {
-	printf("\033[1m%s\033[0m\n", text);
-}
-
-void bold_inderlined(char *text) {
-	printf("\033[1m%s\033[0m\n", text);
-}
-
-// italics formats
-void italics(char *text) {
-	printf("\033[3m%s\033[0m\n", text);
-}
-
-void italics_bold(char *text) {
-	printf("\033[3;1m%s\033[0m\n", text);
-}
-
-void italics_striked(char *text) {
-	printf("\033[3;9m%s\033[0m\n", text);
-}
-
-void italics_underlined(char *text) {
-	printf("\033[3;4m%s\033[0m\n", text);
-}
-
-// 3 formats
-void italics_bold_striked(char *text) {
-	printf("\033[3;9;1m%s\033[0m\n", text);
-}
-
-void italics_bold_underlined(char *text) {
-	printf("\033[3;4;1m%s\033[0m\n", text);
-}
-
-// single
-void underlined(char *text) {
-	printf("\033[4m%s\033[0m\n", text);
-}
-
-void underlined_stricked(char *text) {
-	printf("\033[4;9m%s\033[0m\n", text);
-}
-
-void highlight(char *text) {
-	printf("\033[7m%s\033[0m\n", text);
-}
-
-void highlight_striked(char *text) {
-	printf("\033[7;9m%s\033[0m\n", text);
-}
-
-void striked(char *text) {
-	printf("\033[9m%s\033[0m\n", text);
 }
 
 char *replace(char *orig, char *rep, char *with) {
@@ -127,8 +63,4 @@ void *__circles(char *text) {
 	new = replace(new, "n", "ⓝ ");
 	final = trim(new);
 	return final;
-}
-
-void circles(char *text) {
-	print(__circles(text));
 }
